@@ -7,9 +7,9 @@ phases:
       - cd frontend
       - npm install
       - npm run buil
-    post_build:
-      commands:
-        - echo Build completed on 'date'
+  post_build:
+    commands:
+      - echo Build completed on 'date'
 
 artifacts:
   base-directory: frontend/build
