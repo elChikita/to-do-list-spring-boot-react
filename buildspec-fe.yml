@@ -3,13 +3,13 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo Build started on 'date'
+      - echo Build started on `date`
       - cd frontend
       - npm install
       - npm run buil
   post_build:
     commands:
-      - echo Build completed on 'date'
+      - echo Build completed on `date`
 
 artifacts:
   base-directory: frontend/build
