@@ -24,5 +24,5 @@ import io.swagger.annotations.ApiResponses;
 public class FrolovController {
     @ResponseStatus(code = HttpStatus.OK)
     @RequestMapping(value = "/api/student/hello", method = RequestMethod.GET)
-    public ResponseEntity<String> hello() {return new ResponseEntity<>(body: "Hello World", HttpStatus.OK);}
+    public ResponseEntity<String> hello() {return new ResponseEntity<>("Hello World", HttpStatus.OK);}
 }
