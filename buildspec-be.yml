@@ -11,6 +11,7 @@ phases:
       - sudo yum install -y apache-maven
       - mvn --version
       - mvn clear install
+      - mvn spring-boot:run
       # - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 368888336862.dkr.ecr.us-east-1.amazonaws.com
       # - docker build -t frolov-nikita-lab3 .
       # - docker tag frolov-nikita-lab3:latest 368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest
