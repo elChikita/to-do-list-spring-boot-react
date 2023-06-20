@@ -5,15 +5,24 @@ phases:
     commands:
       - echo Build started on `date`
       - cd backend/to-do-list
-      - sudo yum update -y
-      - sudo yum -y install maven
-      - mvn clear install
-      - sleep 60
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 368888336862.dkr.ecr.us-east-1.amazonaws.com
-      - docker build -t frolov-nikita-lab3 .
-      - docker tag frolov-nikita-lab3:latest 368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest
-      - docker push 368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest
-      - aws register-task-definition --family frolov-nikita-lab03-td --container-definitions "[{\"name\":\"frolov-nikita-todo-be\",\"image\":\"368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest\",\"cpu\":1,\"memory\":0.75,\"essential\":true}]"
+      - sudo yum install wget -y
+      - sudo wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
+      - sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
+      - sudo yum install -y apache-maven
+      - mvn --version
+      # - wget https://dlcdn.apache.org/maven/maven-3/3.9.2/binaries/apache-maven-3.9.2-bin.tar.gz
+      # - tar -xvf apache-maven-3.9.2-bin.tar.gz
+      # - sudo mv apache-maven-3.9.2 /opt/
+      # - echo -e "M2_HOME='/opt/apache-maven-3.9.2'\nPATH=\"$M2_HOME/bin:$PATH\"\nexport PATH" > ~/.profile
+      # - source .profile
+      # - sudo yum -y install maven
+      # - mvn clear install
+      # - sleep 60
+      # - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 368888336862.dkr.ecr.us-east-1.amazonaws.com
+      # - docker build -t frolov-nikita-lab3 .
+      # - docker tag frolov-nikita-lab3:latest 368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest
+      # - docker push 368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest
+      # - aws register-task-definition --family frolov-nikita-lab03-td --container-definitions "[{\"name\":\"frolov-nikita-todo-be\",\"image\":\"368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest\",\"cpu\":1,\"memory\":0.75,\"essential\":true}]"
   post_build:
     commands:
       - echo Build completed on `date`
