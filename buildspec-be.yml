@@ -11,7 +11,7 @@ phases:
       - docker build -t frolov-nikita-lab3 .
       - docker tag frolov-nikita-lab3:latest 368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest
       - docker push 368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest
-      - aws register-task-definition --family frolov-nikita-lab03-td --container-definitions "[{\"name\":\"frolov-nikita-todo-be\",\"image\":\"368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest\",\"cpu\":1,\"memory\":0.75,\"essential\":true}]"
+      - aws register-task-definition --cli-input-json ../../task-definition.json
   post_build:
     commands:
       - echo Build completed on `date`
