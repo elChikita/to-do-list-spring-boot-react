@@ -5,16 +5,13 @@ phases:
     commands:
       - echo Build started on `date`
       - cd backend/to-do-list
-      # - sudo yum install wget -y
-      # - sudo wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
-      # - sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
       - sudo yum install -y maven
       - mvn clean install
-      # - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 368888336862.dkr.ecr.us-east-1.amazonaws.com
-      # - docker build -t frolov-nikita-lab3 .
-      # - docker tag frolov-nikita-lab3:latest 368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest
-      # - docker push 368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest
-      # - aws register-task-definition --family frolov-nikita-lab03-td --container-definitions "[{\"name\":\"frolov-nikita-todo-be\",\"image\":\"368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest\",\"cpu\":1,\"memory\":0.75,\"essential\":true}]"
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 368888336862.dkr.ecr.us-east-1.amazonaws.com
+      - docker build -t frolov-nikita-lab3 .
+      - docker tag frolov-nikita-lab3:latest 368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest
+      - docker push 368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest
+      - aws register-task-definition --family frolov-nikita-lab03-td --container-definitions "[{\"name\":\"frolov-nikita-todo-be\",\"image\":\"368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest\",\"cpu\":1,\"memory\":0.75,\"essential\":true}]"
   post_build:
     commands:
       - echo Build completed on `date`
