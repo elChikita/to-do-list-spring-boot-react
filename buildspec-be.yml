@@ -5,6 +5,7 @@ phases:
     commands:
       - echo Build started on `date`
       - cd backend/to-do-list
+      - sudo yum update -y
       - sudo yum -y install maven
       - mvn clear install
       - sleep 60
