@@ -10,14 +10,7 @@ phases:
       - sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
       - sudo yum install -y apache-maven
       - mvn --version
-      # - wget https://dlcdn.apache.org/maven/maven-3/3.9.2/binaries/apache-maven-3.9.2-bin.tar.gz
-      # - tar -xvf apache-maven-3.9.2-bin.tar.gz
-      # - sudo mv apache-maven-3.9.2 /opt/
-      # - echo -e "M2_HOME='/opt/apache-maven-3.9.2'\nPATH=\"$M2_HOME/bin:$PATH\"\nexport PATH" > ~/.profile
-      # - source .profile
-      # - sudo yum -y install maven
-      # - mvn clear install
-      # - sleep 60
+      - mvn clear install
       # - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 368888336862.dkr.ecr.us-east-1.amazonaws.com
       # - docker build -t frolov-nikita-lab3 .
       # - docker tag frolov-nikita-lab3:latest 368888336862.dkr.ecr.us-east-1.amazonaws.com/frolov-nikita-lab3:latest
